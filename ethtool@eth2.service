@@ -1,0 +1,11 @@
+[Unit]
+Description=ethtool configuration to enable 2500mbps speed for the specified card
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+ExecStart=/usr/bin/ethtool -s %i advertise 0x800000000000
+Type=oneshot
+
+[Install]
+WantedBy=multi-user.target
